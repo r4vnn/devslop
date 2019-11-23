@@ -14,15 +14,17 @@ steps:
   inputs:
     versionSpec: '12.x'
 
-- script: npm i -g standard@14 && cd frontend && npm install && cd ..
-- script: npm run lint
-  displayName: 'Installing npm'
-
-- script: rm -rf node_modules
-- script: rm -rf frontend/node_modules
+- script: rm -rf node_modules && rm -rf frontend/node_modules
+  displayName: 'Remove node modules'
 - script: npm install --production
+  displayName: 'Npm install'
 - script: npm run package
-  displayName: 'Completing node.js setup'
+  displayName: 'Npm run'
+
+- script: npm i -g standard@14 && cd frontend && npm install && cd ..
+  displayName: 'Installing npm'
+- script: npm run lint
+  displayName: 'Run lint'
 
 - task: Docker@2
   displayName: 'Build an image'
