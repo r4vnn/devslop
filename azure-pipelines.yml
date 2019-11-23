@@ -14,10 +14,7 @@ steps:
   inputs:
     versionSpec: 12
 
-- script: npm link
-  displayName: 'Linking npm'
-
-- script: npm install
+- script: npm install -g
   displayName: 'Installing node.js'
 
 - script: npm test
