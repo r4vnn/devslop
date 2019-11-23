@@ -21,6 +21,9 @@ steps:
 - script: npm run package
   displayName: 'Npm run'
 
+- script: npm install -g @angular/cli
+  displayName: 'Installing angular cli'
+
 - script: npm i -g standard@14 && cd frontend && npm install && cd ..
   displayName: 'Installing npm'
 - script: npm run lint
