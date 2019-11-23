@@ -14,6 +14,9 @@ steps:
   inputs:
     versionSpec: 12
 
+- script: npm link
+  displayName: 'Linking npm'
+
 - script: npm install
   displayName: 'Installing node.js'
 
