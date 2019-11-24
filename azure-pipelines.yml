@@ -5,8 +5,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  dockerHub: 'docker-hub-dransfeldt-general'
-  imageName: 'dransfeldt/juice-shop'
+  dockerHubServiceConnection: 'docker-hub-dransfeldt'
+  imageName: '/juice-shop'
 
 steps:
 - script: sudo apt install google-chrome-stable
@@ -40,7 +40,7 @@ steps:
 - task: Docker@2
   displayName: 'Push image'
   inputs:
-    containerRegistry: $(dockerHub)
+    containerRegistry: $(dockerHubServiceConnection)
     repository: $(imageName)
     command: push
     tags: 'devslop'
