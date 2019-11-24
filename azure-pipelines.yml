@@ -6,7 +6,7 @@ pool:
 
 variables:
   dockerHub: 'docker-hub-dransfeldt-general'
-  imageName: 'juice-shop'
+  imageName: 'general/juice-shop'
 
 steps:
 - script: sudo apt install google-chrome-stable
@@ -44,8 +44,3 @@ steps:
     repository: $(imageName)
     command: push
     tags: 'devslop'
-
-- script: echo Success
-  condition: succeeded()
-- script: echo Failed
-  condition: failed()
