@@ -6,7 +6,7 @@ pool:
 
 variables:
   dockerHub: 'docker-hub-dransfeldt-general'
-  imageName: 'general/juice-shop'
+  imageName: 'dransfeldt/juice-shop'
 
 steps:
 - script: sudo apt install google-chrome-stable
