@@ -5,6 +5,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
+  dockerHub: 'docker-hub-dransfeldt-general'
   imageName: 'juice-shop'
 
 steps:
@@ -30,11 +31,19 @@ steps:
   displayName: 'Run lint'
 
 - task: Docker@2
-  displayName: 'Build an image'
+  displayName: 'Build image'
   inputs:
     repository: $(imageName)
     command: build
     Dockerfile: Dockerfile
+
+- task: Docker@2
+  displayName: 'Push image'
+  inputs:
+    containerRegistry: $(dockerHub)
+    repository: $(imageName)
+    command: push
+    tags: 'devslop'
 
 - script: echo Success
   condition: succeeded()
