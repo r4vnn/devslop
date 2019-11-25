@@ -6,29 +6,29 @@ pool:
 
 variables:
   dockerHubServiceConnection: 'docker-hub-dransfeldt'
-  imageName: 'juice-shop'
+  imageName: 'dransfeldt/juice-shop'
 
 steps:
-- script: sudo apt install google-chrome-stable
-  displayName: 'Installing Chrome'
+#- script: sudo apt install google-chrome-stable
+#  displayName: 'Installing Chrome'
 - task: NodeTool@0
   inputs:
     versionSpec: '12.x'
 
-- script: rm -rf node_modules && rm -rf frontend/node_modules
-  displayName: 'Remove node modules'
-- script: npm install --production
-  displayName: 'Npm install'
-- script: npm run package
-  displayName: 'Npm run'
+#- script: rm -rf node_modules && rm -rf frontend/node_modules
+#  displayName: 'Remove node modules'
+#- script: npm install --production
+#  displayName: 'Npm install'
+#- script: npm run package
+#  displayName: 'Npm run'
 
-- script: npm install -g @angular/cli
-  displayName: 'Installing angular cli'
+#- script: npm install -g @angular/cli
+#  displayName: 'Installing angular cli'
 
-- script: npm i -g standard@14 && cd frontend && npm install && cd ..
-  displayName: 'Installing npm'
-- script: npm run lint
-  displayName: 'Run lint'
+#- script: npm i -g standard@14 && cd frontend && npm install && cd ..
+#  displayName: 'Installing npm'
+#- script: npm run lint
+#  displayName: 'Run lint'
 
 - task: Docker@2
   displayName: 'Build image'
@@ -43,4 +43,4 @@ steps:
     containerRegistry: $(dockerHubServiceConnection)
     repository: $(imageName)
     command: push
-    tags: 'devslop'
+    tags: 'test'
