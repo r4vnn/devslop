@@ -6,7 +6,7 @@ pool:
 
 variables:
   dockerHubServiceConnection: 'docker-hub-dransfeldt'
-  imageName: 'dransfeldt/juice-shop'
+  imageName: 'dransfeldt/juice-shop:$(Build.BuildId)'
 
 steps:
 #- script: sudo apt install google-chrome-stable
@@ -43,4 +43,4 @@ steps:
     containerRegistry: $(dockerHubServiceConnection)
     repository: $(imageName)
     command: push
-    tags: 'test'
+#    tags: '$(Build.BuildId)'
