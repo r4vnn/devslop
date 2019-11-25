@@ -4,10 +4,6 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  dockerHubServiceConnection: 'docker-hub-dransfeldt'
-  imageName: 'dransfeldt/juice-shop:$(Build.BuildId)'
-
 steps:
 #- script: sudo apt install google-chrome-stable
 #  displayName: 'Installing Chrome'
@@ -31,16 +27,9 @@ steps:
 #  displayName: 'Run lint'
 
 - task: Docker@2
-  displayName: 'Build image'
   inputs:
-    repository: $(imageName)
-    command: build
-    Dockerfile: Dockerfile
+    containerRegistry: 'docker-hub-dransfeldt'
+    repository: 'dransfeldt/juice-shop'
+    command: 'buildAndPush'
+    Dockerfile: 'Dockerfile'
 
-- task: Docker@2
-  displayName: 'Push image'
-  inputs:
-    containerRegistry: $(dockerHubServiceConnection)
-    repository: $(imageName)
-    command: push
-#    tags: '$(Build.BuildId)'
