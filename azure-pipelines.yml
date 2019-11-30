@@ -11,6 +11,8 @@ steps:
   inputs:
     versionSpec: '12.x'
 
+- task: WhiteSource Bolt@19
+
 #- script: rm -rf node_modules && rm -rf frontend/node_modules
 #  displayName: 'Remove node modules'
 #- script: npm install --production
