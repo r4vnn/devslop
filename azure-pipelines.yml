@@ -5,7 +5,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: WhiteSource Bolt@19
+- task: SonarQubeAnalyze@4
 
 - task: NodeTool@0
   inputs:
