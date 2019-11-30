@@ -8,7 +8,7 @@ steps:
 #- script: sudo apt install google-chrome-stable
 #  displayName: 'Installing Chrome'
 
-- task: WhiteSource Bolt@19
+
 
 - task: NodeTool@0
   inputs:
@@ -33,6 +33,13 @@ steps:
   inputs:
     containerRegistry: 'docker-hub-dransfeldt'
     repository: 'dransfeldt/juice-shop'
-    command: 'buildAndPush'
+    command: 'Build'
     Dockerfile: 'Dockerfile'
 
+- task: WhiteSource Bolt@19
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'docker-hub-dransfeldt'
+    repository: 'dransfeldt/juice-shop'
+    command: 'Push'
