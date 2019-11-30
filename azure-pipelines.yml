@@ -5,10 +5,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-#- script: sudo apt install google-chrome-stable
-#  displayName: 'Installing Chrome'
-
-
+- task: WhiteSource Bolt@19
 
 - task: NodeTool@0
   inputs:
@@ -30,15 +27,15 @@ steps:
 #  displayName: 'Run lint'
 
 - task: Docker@2
+  displayName: 'Docker: Build'
   inputs:
     containerRegistry: 'docker-hub-dransfeldt'
     repository: 'dransfeldt/juice-shop'
     command: 'Build'
     Dockerfile: 'Dockerfile'
 
-- task: WhiteSource Bolt@19
-
 - task: Docker@2
+  displayName: 'Docker: Push'
   inputs:
     containerRegistry: 'docker-hub-dransfeldt'
     repository: 'dransfeldt/juice-shop'
