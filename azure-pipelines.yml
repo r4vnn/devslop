@@ -5,11 +5,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: SonarQubeAnalyze@4
+
+#- task: SonarQubeAnalyze@4
 
 - task: NodeTool@0
   inputs:
-    versionSpec: '12.x'
+    versionSpec: '10.x'
 
 #- script: rm -rf node_modules && rm -rf frontend/node_modules
 #  displayName: 'Remove node modules'
