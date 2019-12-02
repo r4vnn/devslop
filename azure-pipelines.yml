@@ -9,12 +9,11 @@ steps:
   inputs:
     SonarCloud: 'SonarCloud'
     organization: 'dransfeldt'
+    projectKey: 'devslop'
     scannerMode: 'CLI'
     configMode: 'file'
 
 - task: SonarCloudAnalyze@1
-  inputs:
-    projectKey: 'devslop'
     
 
 - task: SonarCloudPublish@1
