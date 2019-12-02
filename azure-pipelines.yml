@@ -13,6 +13,10 @@ steps:
     configMode: 'file'
 
 - task: SonarCloudAnalyze@1
+  inputs:
+    projectKey: 'devslop'
+    
+
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
