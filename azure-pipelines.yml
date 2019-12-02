@@ -6,22 +6,7 @@ pool:
 
 steps:
 
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'SonarCloud'
-    organization: 'dransfeldt'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'devslop'
-    cliProjectName: 'devslop'
-    cliSources: '.'
 
-- task: SonarCloudAnalyze@1
-    
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
-#- task: SonarQubeAnalyze@4
 
 - task: NodeTool@0
   inputs:
@@ -41,6 +26,25 @@ steps:
 #  displayName: 'Installing npm'
 #- script: npm run lint
 #  displayName: 'Run lint'
+
+- script: npm install typescript
+  displayName: 'Typescript'
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarCloud'
+    organization: 'dransfeldt'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'devslop'
+    cliProjectName: 'devslop'
+    cliSources: '.'
+
+- task: SonarCloudAnalyze@1
+    
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
 
 - task: Docker@2
   displayName: 'Docker: Build'
