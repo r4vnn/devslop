@@ -5,12 +5,16 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'SonarCloud'
     organization: 'dransfeldt'
-    projectKey: 'devslop'
-    projectName: 'devslop'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'devslop'
+    cliProjectName: 'devslop'
+    cliSources: '.'
 
 - task: SonarCloudAnalyze@1
     
