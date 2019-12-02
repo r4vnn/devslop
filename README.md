@@ -1,4 +1,4 @@
-#When Juice Shop meets DevSlop
+# When Juice Shop meets DevSlop
 
 To play with automated securint testing in a CI/CD pipeline I have copied with the repository from the OWASP Juice Shop project.
 
