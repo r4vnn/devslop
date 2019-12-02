@@ -11,10 +11,6 @@ steps:
     organization: 'dransfeldt'
     projectKey: 'devslop'
     projectName: 'devslop'
-    scannerMode: 'CLI'
-    cliProjectKey: 'devslop'
-    cliProjectName: 'devslop'
-    configMode: 'file'
 
 - task: SonarCloudAnalyze@1
     
