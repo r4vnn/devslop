@@ -4,39 +4,40 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  imageName: 'juice-shop'
-
 steps:
-- script: sudo apt install google-chrome-stable
-  displayName: 'Installing Chrome'
+
+#- task: SonarQubeAnalyze@4
+
 - task: NodeTool@0
   inputs:
-    versionSpec: 12
+    versionSpec: '10.x'
 
-- script: npm link
-  displayName: 'Linking npm'
+#- script: rm -rf node_modules && rm -rf frontend/node_modules
+#  displayName: 'Remove node modules'
+#- script: npm install --production
+#  displayName: 'Npm install'
+#- script: npm run package
+#  displayName: 'Npm run'
 
-- script: npm install
-  displayName: 'Installing node.js'
+#- script: npm install -g @angular/cli
+#  displayName: 'Installing angular cli'
 
-- script: npm test
-  displayName: 'Testing node.js'
-
-- script: rm -rf node_modules
-- script: rm -rf frontend/node_modules
-- script: npm install --production
-- script: npm run package
-  displayName: 'Completing node.js setup'
+#- script: npm i -g standard@14 && cd frontend && npm install && cd ..
+#  displayName: 'Installing npm'
+#- script: npm run lint
+#  displayName: 'Run lint'
 
 - task: Docker@2
-  displayName: 'Build an image'
+  displayName: 'Docker: Build'
   inputs:
-    repository: $(imageName)
-    command: build
-    Dockerfile: Dockerfile
+    containerRegistry: 'docker-hub-dransfeldt'
+    repository: 'dransfeldt/juice-shop'
+    command: 'Build'
+    Dockerfile: 'Dockerfile'
 
-- script: echo Success
-  condition: succeeded()
-- script: echo Failed
-  condition: failed()
+- task: Docker@2
+  displayName: 'Docker: Push'
+  inputs:
+    containerRegistry: 'docker-hub-dransfeldt'
+    repository: 'dransfeldt/juice-shop'
+    command: 'Push'
