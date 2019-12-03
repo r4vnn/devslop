@@ -27,6 +27,18 @@ steps:
 #- script: npm run lint
 #  displayName: 'Run lint'
 
+- script: npm i npm -g
+  displayName: 'update npm'
+
+- script: npm -v
+  displayName: 'check version'
+
+- script: npm install
+  displayName: 'npm install'
+
+- script: npm audit --json > audit.json
+  displayName: 'audit'
+
 - script: npm install typescript
   displayName: 'Typescript'
 
