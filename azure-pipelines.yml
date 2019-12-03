@@ -36,11 +36,8 @@ steps:
 - script: npm install --save
   displayName: 'npm install'
 
-- script: npm install audit
-  displayName: 'update npm'
-
-- script: npm audit --json > audit.json
-  displayName: 'audit'
+- script: cd frontend && npm audit --json > audit.json && cd..
+  displayName: 'npm audit'
 
 - script: npm install typescript
   displayName: 'Typescript'
