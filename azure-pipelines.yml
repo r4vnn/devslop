@@ -36,6 +36,9 @@ steps:
 - script: npm install --save
   displayName: 'npm install'
 
+- script: npm install -g @angular/cli
+  displayName: 'Installing angular cli'
+
 - script: cd frontend && npm audit --json > audit.json && cd..
   displayName: 'npm audit'
 
