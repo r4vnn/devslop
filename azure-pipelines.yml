@@ -33,7 +33,7 @@ steps:
 - script: npm -v
   displayName: 'npm check version'
 
-- script: npm install
+- script: npm install --save
   displayName: 'npm install'
 
 - script: npm audit --json > audit.json
