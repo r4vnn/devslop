@@ -36,6 +36,9 @@ steps:
 - script: npm install --save
   displayName: 'npm install'
 
+- script: npm install audit
+  displayName: 'update npm'
+
 - script: npm audit --json > audit.json
   displayName: 'audit'
 
